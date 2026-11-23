@@ -1,6 +1,6 @@
 # 实践课2：小组组织建仓与 Pi Agent 源码阅读
 
-- **姓名**：Zhang Jiaqi
+- **姓名**：张佳琦
 - **GitHub**：Phantasy-28
 - **小组组织**：System-Analysis-Homework
 - **小组代码仓库**：<https://github.com/System-Analysis-Homework/pi-hunnu-2026>
@@ -9,8 +9,6 @@
 - **分析版本**：Pi 1.5.2 monorepo（`package.json` 中 `version = 1.5.2`）
 - **本机环境**：Windows 11 / PowerShell 5.1 / Node.js v24.15.0 / npm / Git 2.54.0
 - **本人重点分析模块**：`coding-agent`、`agent`、`ai`
-
-> 说明：本报告在本人本地仓库中实际执行了依赖安装与 `npm run build`，下文的构建顺序、产物统计和依赖判断均来自本机源码、`package.json`、`tsconfig.build.json` 与构建日志，不是只根据包名或简介推测。
 
 ---
 
