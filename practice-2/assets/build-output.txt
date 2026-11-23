@@ -1,0 +1,17 @@
+﻿Command: npm run build
+Result: exit code 0
+
+Root order:
+telemetry -> schema -> chord -> tui -> codemode -> mcp -> ai -> durable -> env -> agent -> coding-agent
+
+Key output:
+- @earendil-works/pi-ai generate-models: Generated provider catalogs and src/models.generated.ts
+- ai provider data: src/providers/data/ = 44 JSON files
+- ai model data: Generated model data is valid.
+- Total tool-capable models: 1692
+- Reasoning-capable models: 1454
+- @earendil-works/pi-coding-agent: Built packages\coding-agent\dist\bundle (84 files, 9.4 MiB)
+
+dist file counts after build (includes .js/.d.ts/.map):
+telemetry=32, schema=172, chord=1196, tui=184, codemode=64,
+mcp=112, ai=884, durable=408, env=36, agent=24, coding-agent=1141

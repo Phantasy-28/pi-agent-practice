@@ -1,0 +1,60 @@
+flowchart TB
+  subgraph L0["L0 基础能力层（无内部包依赖）"]
+    direction LR
+    telemetry["① telemetry<br/>pi-telemetry"]
+    schema["② schema<br/>pi-schema"]
+    tui["④ tui<br/>pi-tui"]
+    codemode["⑤ codemode<br/>pi-codemode"]
+    mcp["⑥ mcp<br/>pi-mcp"]
+  end
+
+  subgraph L1["L1 核心运行时与契约层"]
+    direction LR
+    chord["③ chord<br/>@earendil-works/chord"]
+    ai["⑦ ai<br/>pi-ai"]
+  end
+
+  subgraph L2["L2 智能体与持久化层"]
+    direction LR
+    agent["⑩ agent<br/>pi-agent-core"]
+    durable["⑧ durable<br/>pi-durable"]
+  end
+
+  subgraph L3["L3 应用集成层"]
+    direction LR
+    env["⑨ env<br/>pi-env"]
+    codingAgent["⑪ coding-agent<br/>pi-coding-agent"]
+  end
+
+  chord --> schema
+  chord --> telemetry
+  ai --> schema
+  ai --> telemetry
+  agent --> ai
+  agent --> schema
+  durable --> chord
+  durable --> ai
+  durable --> codemode
+  durable --> schema
+  durable --> telemetry
+  env --> chord
+  env --> durable
+  codingAgent --> agent
+  codingAgent --> ai
+  codingAgent --> codemode
+  codingAgent --> mcp
+  codingAgent --> tui
+
+  peers["外部可选 peer：esbuild / ws / react"]
+  chord -. "可选 peer（仅 /plugins、/http、/react 等入口）" .-> peers
+
+  classDef base fill:#e8f1ff,stroke:#3b6ea8,color:#102a43;
+  classDef runtime fill:#e6f7f1,stroke:#2f7d5b,color:#102a43;
+  classDef persist fill:#fff3e0,stroke:#b26a00,color:#102a43;
+  classDef app fill:#f3e8ff,stroke:#6b3fa0,color:#102a43;
+  classDef peer fill:#f5f5f5,stroke:#999,color:#333,stroke-dasharray: 5 3;
+  class telemetry,schema,tui,codemode,mcp base;
+  class chord,ai runtime;
+  class agent,durable persist;
+  class env,codingAgent app;
+  class peers peer;
